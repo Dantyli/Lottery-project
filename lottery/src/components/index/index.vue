@@ -52,10 +52,12 @@
                   <span class="fucai_icon"></span>
                   <i>福彩</i>
                </li>
+               <router-link to="/kThree">
                <li>
                   <span class="kuai3_icon"></span>
                   <i>快3</i>
                </li>
+               </router-link>
              <div style="clear:both"></div>
            </ul>
            <p class="domain-title">大乐透<span style="float:right;border:1px solid #eee;" @click="chose">换一注</span></p>
@@ -80,10 +82,12 @@
                   <span class="fucai_icon"></span>
                   <i>福彩</i>
                </li>
+               <router-link to="/kThree">
                <li>
                   <span class="kuai3_icon"></span>
                   <i>快3</i>
                </li>
+               </router-link>
                <li>
                   <span class="football_icon"></span>
                   <i>竞彩足球</i>

@@ -47,7 +47,8 @@ const router= new Router({
     },
     {
       path:'/kThree',
-      component:kThree
+      component:kThree,
+      meta:{index:3}
     },
     {
       path:'/openHall',

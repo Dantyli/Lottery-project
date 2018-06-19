@@ -32,6 +32,7 @@
           </div>
            <i class="right_icon" />
        </li>
+       <router-link to="/kThree">
         <li class="kuai3_icon">
           <div >
              <p>快3</p>
@@ -39,6 +40,7 @@
           </div>
            <i class="right_icon" />
        </li>
+       </router-link>
     </ul>
 </div>
 </template>

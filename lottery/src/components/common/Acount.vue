@@ -13,10 +13,29 @@ export default{
     props:['acount','total'],
     methods:{
        clearNum(){
-           this.$root.eventHub.$emit('clear');
+           const rout=this.$route
+           switch(rout.path){
+               case '/dbc':
+               this.$root.eventHub.$emit('clear');
+               break;
+               case '/kThree':
+               this.$root.eventHub.$emit('cleart');
+               break;
+           }
+           
        },
        confirm(){
-          this.$root.eventHub.$emit('sureBuy');
+           const rout=this.$route
+           console.log(rout);
+           switch(rout.path){
+               case '/dbc':
+               this.$root.eventHub.$emit('sureBuy');
+               break;
+               case '/kThree':
+               this.$root.eventHub.$emit('subAcount')
+               break;
+           }
+          
        }
     }
 }
