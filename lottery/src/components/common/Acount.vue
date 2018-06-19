@@ -29,7 +29,7 @@ export default{
            console.log(rout);
            switch(rout.path){
                case '/dbc':
-               this.$root.eventHub.$emit('sureBuy');
+               this.$root.eventHub.$emit('sureBuy',this.acount,this.total);
                break;
                case '/kThree':
                this.$root.eventHub.$emit('subAcount')

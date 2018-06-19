@@ -36,6 +36,11 @@ export default{
             this.list=this.all[i];
             this.type=i;
         }
+    },
+    created(){
+        let ar=this.all[1].concat(this.$store.state.buylogs);
+        this.all[0]=this.all[0].concat(this.$store.state.buylogs)
+        this.all[1]=ar
     }
 }
 </script>
@@ -46,6 +51,8 @@ export default{
     width:100%;
     height:0.8rem;
     line-height:0.8rem;
+    z-index: 10;
+    background: rgb(243,243,243);
 }
 .l_tabs span{
     width:33%;

@@ -70,16 +70,20 @@ export default{
             this.total=0;
             this.acount=0;
         },
-        sure(){
+        sure(o,t){
+            if(this.total==0){
+                return
+            }
+            this.$store.dispatch('dbc',{num:o,price:t});
             this.$message({
-                message:'购买成功',
+                message:`购买成功,${o}注共${t}元`,
                 type:'success',
                 duration:'800'
             })
+            this.clear();
         }
     },
     mounted(){
-        
         this.$root.eventHub.$on('clear',this.clear);
         this.$root.eventHub.$on('sureBuy',this.sure)
     }

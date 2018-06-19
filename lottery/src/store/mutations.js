@@ -1,21 +1,9 @@
-const ADD_FRIEND='ADD_FRIEND'
-const SEND_MSG='SEND_MSG'
+import config from '../config/config'
 const LOGIN='LOGIN'
 const RECHARGE='RECHARGE'
+const DBC='DBC'
+const KTHREE='KTHREE'
 export default{
-    //添加好友
-    [ADD_FRIEND](state,name){
-        state.friends.push(name);
-        state.msgs[name]=[]
-    },
-    //发送消息
-    [SEND_MSG](state,{msg,name}){
-        let imsg={}
-        imsg.flag=2
-        imsg.msg=msg
-        console.log(name,imsg)
-        state.msgs[name].push(imsg)
-    },
     //登录操作
     [LOGIN](state,{userName,logTime}){
         state.userinfo['username']=userName
@@ -30,5 +18,26 @@ export default{
         rec.type=type==1?'微信支付':'支付宝支付'
         state.chargelogs.unshift(rec)
         state.userinfo['yu']=price+state.userinfo['yu'];
+    },
+    //购买双色球
+    [DBC](state,{num,price}){
+        state.dbc.num=num
+        state.dbc.price=price
+        let obj={}
+        obj.price=price
+        obj.date=config.date
+        state.buylogs.unshift(obj)
+    },
+    //购买快三
+    [KTHREE](state,{one,two,three,price}){
+        state.kthree.one=one
+        state.kthree.two=two
+        state.kthree.three=three
+        state.kthree.price=price
+        let obj={}
+        obj.date=config.date
+        obj.price=price
+        state.buylogs.unshift(obj);
     }
+
 }

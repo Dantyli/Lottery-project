@@ -108,11 +108,13 @@ export default{
                 this.$message('必须选购3注');
                 return 
             }
+            this.$store.dispatch('kthree',{one:one,two:two,three:three,price:this.total});
             this.$message({
                 'type':'success',
                 message:`购买号码${one},${two},${three}`,
                 duration:1500
             })
+            this.cleart();
         }
     }
 }

@@ -6,5 +6,9 @@ export default {
         yu:0.00
     },
     //充值记录
-    chargelogs:[]
+    chargelogs:[],
+    dbc:{},
+    kthree:{},
+    //投注记录
+    buylogs:[]
 }
