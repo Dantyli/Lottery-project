@@ -121,9 +121,6 @@ export default {
        this.$nextTick(()=>{
            this.isLogin=this.$store.state.isLogin
        })
-       axios.get('../../../static/data.json').then(res=>{
-           this.items=res.data.data.toplog;
-       })
     },
     methods:{
         chose(){
@@ -237,6 +234,10 @@ export default {
     background-size: 30px;
 }
 .rotate {
+    animation-name: num;
+	animation-duration: 0.2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
 	-webkit-animation-name: num;
 	-webkit-animation-duration: 0.2s;
 	-webkit-animation-timing-function: linear;
@@ -245,14 +246,6 @@ export default {
 	-moz-animation-duration: 0.2s;
 	-moz-animation-timing-function: linear;
 	-moz-animation-iteration-count: infinite;
-	-o-animation-name: num;
-	-o-animation-duration: 0.2s;
-	-o-animation-timing-function: linear;
-	-o-animation-iteration-count: infinite;
-	-ms-animation-name: num;
-	-ms-animation-duration: 0.2s;
-	-ms-animation-timing-function: linear;
-	-ms-animation-iteration-count: infinite;
 }
 @-webkit-keyframes num {
 0% {
@@ -276,26 +269,15 @@ export default {
 -moz-transform:rotate(360deg)
 }
 }
-@-o-keyframes num {
+@keyframes num {
 0% {
--o-transform:rotate(0deg);
+transform:rotate(0deg);
 }
 50% {
--o-transform:rotate(180deg)
+transform:rotate(180deg)
 }
 100% {
--o-transform:rotate(360deg)
-}
-}
-@-ms-keyframes num {
-0% {
--ms-transform:rotate(0deg);
-}
-50% {
--ms-transform:rotate(180deg)
-}
-100% {
--ms-transform:rotate(360deg)
+transform:rotate(360deg)
 }
 }
 .fix{
