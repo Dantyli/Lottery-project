@@ -139,5 +139,215 @@ export default {
 }
 </script>
 <style>
-@import './css/index.css'
+.most-popular{
+    background:#fff;
+    margin-bottom:.4rem;
+}
+.populars{
+    background:#fff;
+    width:100%;
+}
+.populars li span{width: 100%;
+    height:50px;
+    line-height:50px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;}
+.populars li i{
+    font-style:normal;
+    line-height:0.8rem;
+    font-size:0.38rem;
+}
+.populars li{float:left;width:25%;text-align:center;}
+.letou-num{
+   height:1rem;
+}
+.letou-num p{
+   height:0.8rem;
+   width:0.8rem;
+   line-height:0.8rem;
+   border-radius:50%;
+   background:#cc2b2f;
+   display:inline-block;
+   float:left;
+   color:#fff;
+   font-size:0.35rem;
+   margin-left:0.2rem;
+   text-align:center;
+}
+.letou-num p:nth-last-of-type(1){
+    background: #2483F9;
+}
+.letou-num p:nth-last-of-type(2){
+    background: #2483F9;
+}
+.most-popular ul{
+    width:100%;
+    border-bottom:1px solid #e2e2e2;
+}
+.most-popular li span{width: 100%;
+    height:50px;
+    line-height:50px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+.most-popular li i{
+    font-style:normal;
+    line-height:0.8rem;
+    font-size:0.38rem;
+}
+.most-popular li{
+    float:left;width:25%;
+    text-align:center;
+}
+.domain-title{
+    background:#fff;
+    line-height:0.6rem;
+    font-size:0.38rem;
+    padding:0.2rem;
+}
+.menu{
+    width:100%;
+    height:78px;
+    margin-bottom:0.4rem;
+    background:#fff;
+    padding:0.2rem 0;
+}
+.menu ul{
+    width:100%;
+    height:78px;
+    font-size:0.38rem;
+    transition: .3s linear;
+}
+.menu li{
+    width:25%;
+    text-align:center;
+    display:inline-block;
+    float:left;
+}
+.menu li span{width: 100%;
+    height:39px;
+    line-height:39px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+}
+.rotate {
+	-webkit-animation-name: num;
+	-webkit-animation-duration: 0.2s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-name: num;
+	-moz-animation-duration: 0.2s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+	-o-animation-name: num;
+	-o-animation-duration: 0.2s;
+	-o-animation-timing-function: linear;
+	-o-animation-iteration-count: infinite;
+	-ms-animation-name: num;
+	-ms-animation-duration: 0.2s;
+	-ms-animation-timing-function: linear;
+	-ms-animation-iteration-count: infinite;
+}
+@-webkit-keyframes num {
+0% {
+-webkit-transform:rotate(0deg);
+}
+50% {
+-webkit-transform:rotate(180deg)
+}
+100% {
+-webkit-transform:rotate(360deg)
+}
+}
+@-moz-keyframes num {
+0% {
+-moz-transform:rotate(0deg);
+}
+50% {
+-moz-transform:rotate(180deg)
+}
+100% {
+-moz-transform:rotate(360deg)
+}
+}
+@-o-keyframes num {
+0% {
+-o-transform:rotate(0deg);
+}
+50% {
+-o-transform:rotate(180deg)
+}
+100% {
+-o-transform:rotate(360deg)
+}
+}
+@-ms-keyframes num {
+0% {
+-ms-transform:rotate(0deg);
+}
+50% {
+-ms-transform:rotate(180deg)
+}
+100% {
+-ms-transform:rotate(360deg)
+}
+}
+.fix{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(78px);
+}
+@keyframes kf-marque-animation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+@-webkit-keyframes kf-marque-animation {
+   0% {
+       -webkit-transform: translateX(0);
+   }
+   100% {
+       -webkit-transform: translateX(-100%);
+   }
+}
+.marquee {
+    background: linear-gradient(0deg,#9600e4,#6b31ef);
+    width: 100%;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    position: relative;
+    font-size: 0.38rem;
+}
+
+.marquee .content {
+    display: inline-block;
+    position: relative;
+    padding-right: 0px;
+    animation: kf-marque-animation 18s linear  infinite;
+    -webkit-animation: kf-marque-animation 18s linear  infinite;
+    white-space: nowrap;
+}
+
+.marquee .content li {
+    display: inline-block;
+    color: #fff;
+    border-radius: 17px;
+    padding: 0 8px;
+    margin-left: 5px;
+}
 </style>
