@@ -5,14 +5,26 @@ import login from '../components/login/login'
 import index from '../components/index/index'
 import choseHall from '../components/choseHall/choseHall'
 import doubleColor from '../components/doubleColor/doubleColor'
-import football from '../components/football/football'
-import kThree from '../components/kThree/kThree'
 import openHall from '../components/openHall/openHall'
 import person from '../components/person/person'
 import recharge from '../components/recharge/recharge'
 import openDetail from '../components/openDetail/openDetail'
 import logs from '../components/logs/logs'
 import userInfo from '../components/person/userinfo'
+import dlt from '../components/dlt/dlt'
+import fc from '../components/fc/fc'
+import plf from '../components/plf/plf'
+import plt from '../components/plt/plt'
+import qlc from '../components/qlc/qlc'
+import qxc from '../components/qxc/qxc'
+import register from '../components/login/register'
+import forget from '../components/login/forget'
+import chargeDes from '../components/recharge/chargeDes'
+import tx from '../components/recharge/tix'
+import txdes from '../components/recharge/tixDes'
+import card from '../components/person/card'
+import set from '../components/person/settings'
+import about from '../components/person/about'
 Vue.use(Router)
 
 const router= new Router({
@@ -42,12 +54,33 @@ const router= new Router({
       meta:{index:3}
     },
     {
-      path:'/football',
-      component:football
+      path:'/dlt',
+      component:dlt,
+      meta:{index:3}
     },
     {
-      path:'/kThree',
-      component:kThree,
+      path:'/fc',
+      component:fc,
+      meta:{index:3}
+    },
+    {
+      path:'/plf',
+      component:plf,
+      meta:{index:3}
+    },
+    {
+      path:'/plt',
+      component:plt,
+      meta:{index:3}
+    },
+    {
+      path:'/qlc',
+      component:qlc,
+      meta:{index:3}
+    },
+    {
+      path:'/qxc',
+      component:qxc,
       meta:{index:3}
     },
     {
@@ -71,6 +104,11 @@ const router= new Router({
       meta:{index:2}
     },
     {
+      path:'/chargeDes',
+      component:chargeDes,
+      meta:{index:3}
+    },
+    {
       path:'/log',
       component:logs,
       meta:{index:3}
@@ -79,6 +117,41 @@ const router= new Router({
       path:'/usi',
       component:userInfo,
       meta:{index:3}
+    },
+    {
+      path:'/card',
+      component:card,
+      meta:{index:3}
+    },
+    {
+      path:'/set',
+      component:set,
+      meta:{index:3}
+    },
+    {
+      path:'/about',
+      component:about,
+      meta:{index:4}
+    },
+    {
+      path:'/register',
+      component:register,
+      meta:{index:3}
+    },
+    {
+      path:'/forget',
+      component:forget,
+      meta:{index:3}
+    },
+    {
+      path:'/tx',
+      component:tx,
+      meta:{index:2}
+    },
+    {
+      path:'/txdes',
+      component:txdes,
+      meta:{index:2}
     }
   ]
 })

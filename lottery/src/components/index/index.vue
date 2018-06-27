@@ -1,11 +1,5 @@
 <template>
     <div>
-       <h2 class="domain-title">www.dantyli.com</h2>
-       <div class="marquee">
-            <ul class="content">
-            <li v-for="item in items">用户{{item.mobile}}赚到{{item.price}}元</li>
-            </ul>
-		</div>
        <div class="menu">
             <ul>
             <router-link to='/openHall'>
@@ -36,7 +30,13 @@
             </ul>
        </div>
        <div class="most-popular">
-           <p class="domain-title">最受欢迎</p>
+           <div class="popular"><p class="popular-title">最受欢迎</p>
+           <div class="roll_news">
+              <ul :style={top} :class="{trans:activeIndex}">
+                 <li v-for="item in news" >{{item}}</li>
+              </ul>
+           </div>
+           </div>
            <ul>
               <router-link to="/dbc">
                <li>
@@ -44,25 +44,30 @@
                   <i>双色球</i>
                </li>
                </router-link>
+                <router-link to="/dlt">
                <li>
-                  <span class="letou_icon"></span>
+                  <span class="dlt_icon"></span>
                   <i>大乐透</i>
                </li>
+               </router-link>
+               <router-link to="/fc">
                <li>
-                  <span class="fucai_icon"></span>
-                  <i>福彩</i>
+                  <span class="fc_icon"></span>
+                  <i>福彩3D</i>
                </li>
-               <router-link to="/kThree">
+               </router-link>
+               <router-link to="/plt">
                <li>
-                  <span class="kuai3_icon"></span>
-                  <i>快3</i>
+                  <span class="plt_icon"></span>
+                  <i>排列3</i>
                </li>
                </router-link>
              <div style="clear:both"></div>
            </ul>
-           <p class="domain-title">大乐透<span style="float:right;border:1px solid #eee;" @click="chose">换一注</span></p>
+           <p class="domain-title"><span>大乐透</span>  <span style="color:#f00">奖池:{{jiangchi}}</span><span class="refresh"  @click="chose">换一注</span></p>
            <div class="letou-num">
                <p v-for="item in rotates" :class="item.rot==1?'rotate':''">{{item.count}}</p>
+               <button>{{buy_one}}元购买</button>
                <div style="clear:both"></div>
            </div>
        </div>
@@ -74,28 +79,42 @@
                   <i>双色球</i>
                </li>
               </router-link>
+              <router-link to="/dlt">
                <li>
-                  <span class="letou_icon"></span>
+                  <span class="dlt_icon"></span>
                   <i>大乐透</i>
                </li>
+               </router-link>
+               <router-link to="/fc">
                <li>
-                  <span class="fucai_icon"></span>
-                  <i>福彩</i>
-               </li>
-               <router-link to="/kThree">
-               <li>
-                  <span class="kuai3_icon"></span>
-                  <i>快3</i>
+                  <span class="fc_icon"></span>
+                  <i>福彩3D</i>
                </li>
                </router-link>
+               <router-link to="/plt">
                <li>
-                  <span class="football_icon"></span>
-                  <i>竞彩足球</i>
+                  <span class="plt_icon"></span>
+                  <i>排列3</i>
                </li>
+               </router-link>
+               <router-link to="/plf">
+               <li>
+                  <span class="plf_icon"></span>
+                  <i>排列五</i>
+               </li>
+               </router-link>
+               <router-link to="/qxc">
                <li>
                   <span class="qxc_icon"></span>
                   <i>七星彩</i>
                </li>
+               </router-link>
+               <router-link to="/qlc">
+               <li>
+                  <span class="qlc_icon"></span>
+                  <i>七乐彩</i>
+               </li>
+               </router-link>
              <div style="clear:both"></div>
        </ul>
     </div>
@@ -112,34 +131,62 @@ export default {
                {count:'00',rot:1},
                {count:'00',rot:1},
                {count:'00',rot:1},
+               {count:'00',rot:1},
                {count:'00',rot:1}
            ],
-           date:'',
            isLogin:false,
-           items:[{"mobile":"166****4900","arid":"1","uid":"80","price":"36.70","createtime":"2018-06-14 10:24"},{"mobile":"186****0399","arid":"1","uid":"2","price":"21.48","createtime":"2018-06-14 10:26"},{"mobile":"133****98151","arid":"1","uid":"34","price":"27.04","createtime":"2018-06-14 10:53"},{"mobile":"139****5750","arid":"1","uid":"15","price":"76.41","createtime":"2018-06-14 11:02"},{"mobile":"183****5867","arid":"1","uid":"16","price":"84.94","createtime":"2018-06-14 11:04"},{"mobile":"138****5563","arid":"1","uid":"1","price":"88.27","createtime":"2018-06-14 11:17"},{"mobile":"183****6825","arid":"1","uid":"131","price":"21.75","createtime":"2018-06-14 11:37"},{"mobile":"176****1019","arid":"1","uid":"14","price":"30.58","createtime":"2018-06-14 11:50"}]
+           activeIndex:0,
+           news:['[大乐透]166***4900喜中100元','[大乐透]166***4900喜中200元','[大乐透]166***4900喜中300元','[大乐透]166***4900喜中100元'],
+           //将最后一条追加最后，无缝滚动
+           timer:'',
+           jiangchi:'7.99亿',
+           buy_one:2
         }
     },
     created(){
-        const that=this;
+       const that=this;
        this.chose();
        this.$nextTick(()=>{
            this.isLogin=this.$store.state.isLogin
-       })
+       });
     },
     methods:{
         chose(){
             this.rotates.forEach((v,i)=>{
                 v.rot=1;
-                v.count=config.randomJx();
+                if(i<5){
+                    v.count=config.randomJx(33);
+                }else{
+                    v.count=config.randomJx(12);
+                }
+                
                 setTimeout(()=>{
                     v.rot=0;
                 },500*(i+1))
             });
         }
+    },
+     computed: {
+    top() {
+      return - this.activeIndex * 50 + 'px';
     }
+  },
+  mounted() {
+    window.timer=setInterval(()=> {
+        console.log('-----');
+      if(this.activeIndex+1<this.news.length){
+         this.activeIndex+=1;
+      }else{
+          this.activeIndex=0;
+      }
+    }, 2000);
+  },
+  destroyed(){
+      clearInterval(window.timer);
+  },
 }
 </script>
-<style>
+<style  >
 .most-popular{
     background:#fff;
     margin-bottom:.4rem;
@@ -165,8 +212,8 @@ export default {
    height:1rem;
 }
 .letou-num p{
-   height:0.8rem;
-   width:0.8rem;
+   height:0.7rem;
+   width:0.7rem;
    line-height:0.8rem;
    border-radius:50%;
    background:#cc2b2f;
@@ -179,6 +226,17 @@ export default {
 }
 .letou-num p:nth-last-of-type(1){
     background: #2483F9;
+}
+.letou-num button{
+    background:#cc2b2f;
+    font-size:0.34rem;
+    border:none;
+    border-radius:3px;
+    padding:0.1rem 0.2rem;
+    float:right;
+    color:#fff;
+    margin-right:0.2rem;
+
 }
 .letou-num p:nth-last-of-type(2){
     background: #2483F9;
@@ -204,18 +262,25 @@ export default {
     float:left;width:25%;
     text-align:center;
 }
+.popular-title{
+    font-weight:900;
+}
 .domain-title{
     background:#fff;
     line-height:0.6rem;
-    font-size:0.38rem;
+    font-size:0.4rem;
     padding:0.2rem;
+    font-weight:900;
+}
+.domain-title span{
+    font-weight:normal;
 }
 .menu{
     width:100%;
     height:78px;
     margin-bottom:0.4rem;
     background:#fff;
-    padding:0.2rem 0;
+    padding:0.4rem 0 0.2rem 0;
 }
 .menu ul{
     width:100%;
@@ -229,9 +294,10 @@ export default {
     display:inline-block;
     float:left;
 }
-.menu li span{width: 100%;
-    height:39px;
-    line-height:39px;
+.menu li span{
+    width: 100%;
+    height:35px;
+    line-height:35px;
     display: block;
     background-repeat: no-repeat;
     background-position: center;
@@ -284,56 +350,42 @@ transform:rotate(180deg)
 transform:rotate(360deg)
 }
 }
-.fix{
-    position:fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transform: translateY(78px);
+.popular{
+    height:50px;
+    padding:0 0.2rem;
 }
-@keyframes kf-marque-animation {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+.popular .popular-title{
+    display:inline-block;
+    width:40%;
+    line-height:50px;
+    font-size:0.4rem;
+    color:#333;
 }
-@-webkit-keyframes kf-marque-animation {
-   0% {
-       -webkit-transform: translateX(0);
-   }
-   100% {
-       -webkit-transform: translateX(-100%);
-   }
+.popular .roll_news{
+    display:inline-block;
+    float:right;
+    overflow:hidden;
+    height:50px;
+    color:#666;
 }
-.marquee {
-    background: linear-gradient(0deg,#9600e4,#6b31ef);
-    width: 100%;
-    border: none;
-    display: block;
-    margin: 0 auto;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: clip;
-    position: relative;
-    font-size: 0.38rem;
+.roll_news li{
+    height:50px;
+    line-height:50px;
+    width:100%;
+    float:none;
 }
-
-.marquee .content {
-    display: inline-block;
-    position: relative;
-    padding-right: 0px;
-    animation: kf-marque-animation 18s linear  infinite;
-    -webkit-animation: kf-marque-animation 18s linear  infinite;
-    white-space: nowrap;
+.roll_news ul.trans{
+ transition:0.5s;
 }
-
-.marquee .content li {
-    display: inline-block;
-    color: #fff;
-    border-radius: 17px;
-    padding: 0 8px;
-    margin-left: 5px;
+.roll_news ul{ 
+     position:relative;
+}
+.refresh{
+    background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMzZiYmMwMi04ZTUyLTRmYTAtYmExOS1hZjNkOGUyNzEwODYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzhBMUI4NjZDREREMTFFN0EwRTJEMTBDOEQxNTkxMkYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzhBMUI4NjVDREREMTFFN0EwRTJEMTBDOEQxNTkxMkYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5ODE1YTVkNC01MTNmLTQ5ZjAtYmM2Yi1mZDliOWFlZWRhOTQiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDpmZDdhMjRmNi0wZmZlLTExN2ItOTdmMS1mNzUwYWMyMzU5NmYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6rDTeaAAACJUlEQVR42rSWTUgVURTHx6egJqFkG7+oUCxFEXmk5OcmalGhuBBqKzwXUujCFn5QaQW1qTYPqbblIoiCCAsiIzEqIQLJatXCjZB9uDBbiP4O/AcGGee9p/MO/Ji5d+65/7l3zpxzM2KxmJPAKqETTkA1FKp/Gb7AS3gC34MmyQgQaodxaHWSs7cwCm/8HkZ8+nJgAl5L5DfE4QwcgGzYC1Xqi2tMq3wmNEfgivbBMzgGa3ALbsKfBKspgEEYgFx4B6fhl9+KMj0iP+AoDCUh4mjMMDTI1+Z4Dnv8hNahDx5pG+ad1G1evovQCHe2+0afoFsDd2rm2wX/oEdB5RsMYdhHuG0xAFddobw0id1QMLRAnQldhCkoD1noL0zqviuij3cSLqRhVVO6tpnQETVM6FLIQp91PRzx5C6zyyGLLela6Bd1uxUz/w3x3+3MUhYusuUlysApCDlbXnbZVvTV3ccQt8zErnja3yJK744izwlZLO6WEBN6rMZZyA9ZzHLnmP1PmdFo1CLjuLbOPuCrkMWm4acbdSMS6YfadOQjV8jK7z0VLdvK4l3MWQL1QaXcquN7qIAZqNmBSI185+D8dkKrcEpih+ADXFOZTmQFGms+B1UmHnoHWDB421asHsB+Vcg26IUyvdSaXsjKfqkSsuXI+zqOWQK4C+dgJZXj1nVoSnLbZnVumPZ7mBXgaAHSrOzeoR+6assBcgFewFNPhvG1TQEGAPHrcU7QMQ2xAAAAAElFTkSuQmCC');
+    background-repeat:no-repeat;
+    background-size:0.3rem;
+    padding-left:0.3rem;
+    background-position:left center;
+    float:right;
 }
 </style>

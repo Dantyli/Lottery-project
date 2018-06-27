@@ -32,8 +32,7 @@ router.beforeEach((to,from,next)=>{
   }
 })
 //自动登录
-let account=sessionStorage.getItem('account')||localStorage.getItem('account')
+let account=localStorage.getItem('account')
 if(account!==null){
-  console.log(new Date().toLocaleTimeString())
-    store.dispatch('login',{name:account,time:new Date().toLocaleTimeString()});
+    store.dispatch('login');
 }

@@ -1,9 +1,9 @@
 <template>
     <div style="height:100%">
-        <Headers title="双色球" />
+        <Headers title="大乐透" />
         <div class="doubleColor">
         <p class="dbc_index">第20180621期 19:40开奖</p>
-        <p class="dbc_tips"><span class="shake">摇一摇机选</span>至少选择6个红球，1个蓝球</p>
+        <p class="dbc_tips"><span class="shake">摇一摇机选</span>至少选择5个红球，2个蓝球</p>
         <ul>
            <li @click="check(index,1)" v-for="(item,index) in red" :class="item.active?'check':''">{{item.num}}</li>
             <div style="clear:both"></div>
@@ -40,15 +40,14 @@ export default{
             obj.num=Util.formatNum(i);
             red.push(obj)
         }
-        for(var i=0;i<17;i++){
+        for(var i=0;i<13;i++){
             let obj={}
             obj.active=false;
             obj.num=Util.formatNum(i);
             blue.push(obj)
         }
         this.red=red;
-        this.blue=blue;
-        //摇一摇机选
+        this.blue=blue
         config.shakeAndRandom(this.randomSelect)
     },
     components:{
@@ -71,7 +70,7 @@ export default{
           this.bluearr=this.blue.filter(r=>{
               return r.active
            })
-            this.acount=config.math(this.redarr.length,6)*config.math(this.bluearr.length,1)
+            this.acount=config.math(this.redarr.length,5)*config.math(this.bluearr.length,2)
             this.total=this.acount*2
         },
         clear(){
@@ -94,55 +93,54 @@ export default{
         },
         sure(){
             if(this.total==0){
-               this.randomSelect();
-               return;
+                this.randomSelect();
+                return
             }
             this.$message({
-                message:`购买成功,${this.acount}注共${this.total}元`,
+                message:`购买成功`,
                 type:'success',
                 duration:'800'
             })
             this.clear();
         },
-        //机选
         randomSelect(){
-            let x=6,y=1;
-            this.clear()
+            const x=5,y=2;
+            this.clear();
             //红球
-            const m=33
+            let m=35
             let randomRed=config.random(m,x);
-            for(var i = 0; i < randomRed.length; i++){
+             for(var i = 0; i < randomRed.length; i++){
                 let j = randomRed[i];
                 this.red[j].active=true;
             }
             //蓝球
-            const n=6;
+            const n=12;
             let randomBlue=config.random(n,y);
             for(var i=0;i<randomBlue.length;i++){
                 let j=randomBlue[i];
                 this.blue[j].active=true;
             }
-             this.redarr=this.red.filter(r=>{
+            this.redarr=this.red.filter(r=>{
               return r.active
            });
           this.bluearr=this.blue.filter(r=>{
               return r.active
            })
-            this.acount=config.math(this.redarr.length,6)*config.math(this.bluearr.length,1)
+            this.acount=config.math(this.redarr.length,5)*config.math(this.bluearr.length,2)
             this.total=this.acount*2
         }
     },
     mounted(){
-        this.$root.eventHub.$on('ssqClear',this.clear);
-        this.$root.eventHub.$on('ssqBuy',this.sure)
+        this.$root.eventHub.$on('dltClear',this.clear);
+        this.$root.eventHub.$on('dltBuy',this.sure)
     },
     destroyed(){
-        this.$root.eventHub.$off('ssqClear');
-        this.$root.eventHub.$off('ssqBuy');
+        this.$root.eventHub.$off('dltClear');
+        this.$root.eventHub.$off('dltBuy');
     }
 }
 </script>
 <style>
-@import './css/doubleColor.css'
+@import '../doubleColor/css/doubleColor.css'
 
 </style>

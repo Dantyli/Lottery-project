@@ -5,9 +5,7 @@ const DBC='DBC'
 const KTHREE='KTHREE'
 export default{
     //登录操作
-    [LOGIN](state,{userName,logTime}){
-        state.userinfo['username']=userName
-        state.userinfo['logtime']=logTime
+    [LOGIN](state){
         state.isLogin=true
     },
     //充值记录

@@ -1,22 +1,28 @@
 <template>
     <div>
-        <Headers title="实名认证" detail="" />
+        <Headers title="我的银行卡" detail="" />
         <div class="userinfo">
             <p>
-              <label>真实姓名</label>
-              <input type="text" placeholder="需与本人身份证姓名保持一致"/>
+              <label>开户姓名</label>
+              <input type="text" placeholder="请输入开户姓名"/>
             </p>
             <p>
-              <label>身份证号</label>
-              <input type="text" placeholder="需与本人身份证号保持一致"/>
+              <label>所属银行</label>
+              <input type="text" placeholder="请输入开户行名称"/>
+            </p>
+             <p>
+              <label>储蓄卡号</label>
+              <input type="text" placeholder="请输入银行卡号"/>
             </p>
         </div>
         <p class="charge_btn"><button>确认提交</button></p>
         <p class="wenxintips">
-        温馨提示：<br />
-        1.用户实名作为领奖凭证，实名后不能在线更改，请仔
-        细核准信息；<br />
-        2.如需更改或有疑问，请联系客服；<br />
+       温馨提示：<br />
+        1.用户需先实名认证才能绑定银行卡，持卡人需与实名
+        的真实姓名一致；<br />
+        2.绑定银行卡是用于资金提现，请仔细核对您的信息是
+        否正确，只支持储蓄卡提现；<br />
+        3.银行卡信息可以多次更改，但只能绑定一个银行卡。
         </p>
         
     </div>

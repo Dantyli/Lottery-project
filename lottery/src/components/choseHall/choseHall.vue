@@ -1,41 +1,65 @@
 <template>
 <div>
-    <Headers :title="title" />
+    <Headers title="购彩大厅" />
     <ul class="choseHall">
-       <li class="football_icon">
+    <router-link to="/dlt">
+       <li class="dlt_icon">
           <div>
-             <p>竞彩足球</p>
+             <p>大乐透</p>
              <p>球迷最爱，返奖率高</p>
           </div>
           <i class="right_icon" />
        </li>
-       <li class="letou_icon">
+    </router-link>
+    <router-link to="/dbc">
+       <li class="dbc_icon">
           <div>
-             <p>大乐透</p>
+             <p>双色球</p>
              <p>奖金高达1600万</p>
           </div>
            <i class="right_icon" />
        </li>
-         <router-link to="/dbc">
-       <li class="dbc_icon">
+    <router-link to="/fc">
+       <li class="fc_icon">
           <div>
-             <p>双色球</p>
+             <p>福彩3D</p>
              <p>2元中1500万</p>
           </div>
            <i class="right_icon" />
        </li>
-       </router-link>
-       <li class="fucai_icon">
+     </router-link>
+     <router-link to="/plt">
+       <li class="plt_icon">
           <div>
-             <p>福彩</p>
+             <p>排列3</p>
              <p>造福玩家</p>
           </div>
            <i class="right_icon" />
        </li>
-       <router-link to="/kThree">
-        <li class="kuai3_icon">
+       </router-link>
+       <router-link to="/plf">
+        <li class="plf_icon">
           <div >
-             <p>快3</p>
+             <p>排列5</p>
+             <p>10分钟一期，来钱快</p>
+          </div>
+           <i class="right_icon" />
+       </li>
+       </router-link>
+         <router-link to="/qlc">
+        <li class="qlc_icon">
+          <div >
+             <p>七乐彩</p>
+             <p>10分钟一期，来钱快</p>
+          </div>
+           <i class="right_icon" />
+       </li>
+       </router-link>
+       </router-link>
+         <router-link to="/qxc">
+        <li class="qxc_icon">
+          <div >
+             <p>七星彩</p>
              <p>10分钟一期，来钱快</p>
           </div>
            <i class="right_icon" />
@@ -49,7 +73,7 @@ import Headers from '../common/Header'
 export default{
     data(){
         return{
-            title:'购彩大厅'
+           
         }
     },
     components:{

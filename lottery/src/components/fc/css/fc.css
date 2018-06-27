@@ -1,0 +1,70 @@
+.tips{
+    padding:0.2rem;
+    color:#999;
+    font-size:0.35rem;
+    text-align:right;
+}
+.tips span{
+    color:#f00;
+}
+.fc{
+    margin-bottom:2.5rem;
+}
+.fc ul{
+    margin-top:0.2rem;
+    padding-left:0.4rem;
+}
+.fc ul p{
+    height:0.6rem;
+    line-height:0.6rem;
+    color:#fff;
+    background:rgb(0,153,67);
+    width:1.5rem;
+    font-size:0.38rem;
+    padding-left:0.2rem;
+    margin-left:-0.4rem;
+}
+.fc ul li{
+    display:inline-block;
+    width:1rem;
+    color:#F95A04;
+    background:#fff;
+    height:1rem;
+    text-align:center;
+    line-height:1rem;
+    font-size:0.42rem;
+    border:1px solid #e2e2e2;
+    border-radius:50%;
+    margin:0.2rem
+}
+.fc ul li.active{
+    background:#F95A04;
+    color:#fff;
+}
+.fc_tab{
+    padding:0 0.4rem;
+    margin-top:50px;
+    background:#fff;
+    height:1rem;
+}
+.fc_tab span{
+    display:inline-block;
+    width:33%;
+    text-align:center;
+    line-height:1rem;
+    height:1rem;
+    font-size:0.42rem;
+    float:left;
+}
+.fc_tab span.active{
+    border-bottom:1px solid #9a1429;
+    color:#9a1429;
+}
+.fc_index{
+    height:1rem;
+    line-height: 1rem;
+    color: #999;
+    font-size: 0.35rem;
+    background: #fff;
+    text-align: center;
+}

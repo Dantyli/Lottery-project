@@ -1,7 +1,7 @@
 export default{
-    login({commit,state},{name,time}){
+    login({commit,state}){
         //执行登录操作
-        commit('LOGIN',{userName:name,logTime:time});
+        commit('LOGIN');
     },
     charge({commit,state},{price,date,type}){
         //充值操作

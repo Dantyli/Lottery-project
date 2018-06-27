@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <transition :name="isHistory?'slide':'edist'">
+  <transition :name="isHistory?'slide-right':'slide-left'">
           <router-view  />
   </transition>
   </div>
