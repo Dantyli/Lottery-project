@@ -29,19 +29,26 @@
        </ul>
        <div class="ad">
            <div>
+            <router-link to="/recharge">
              <img src='./img/charge.png' />
              <div>
              <p style="font-size:0.42rem">充值</p>
              <p>满1000送50</p>
              </div>
+              </router-link>
            </div>
+       
+        
             <div>
+            <router-link to="/tx">
              <img src='./img/tixian.png' />
              <div>
              <p style="font-size:0.42rem">提现</p>
              <p>快速到账服务</p>
              </div>
+              </router-link>
            </div>
+       
            <p style="clear:both"></p>
        </div>
        <ul class="info-detail">
@@ -91,15 +98,12 @@ import Headers from '../common/Header'
 export default{
     data(){
         return{
-            title:'用户中心',
-            username:'',
-            yu:0.00
+            
         }
     },
     created(){
         this.$nextTick(()=>{
-           this.username=this.$store.state.userinfo['username'];
-           this.yu=this.$store.state.userinfo['yu'];
+           
         }) 
     },
     components:{
@@ -140,6 +144,7 @@ export default{
       line-height:0.5rem;
       display:inline-block;
       width:2rem;
+      color:#fff;
   }
    .my_acount{
        background:#fff;

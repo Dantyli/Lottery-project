@@ -2,10 +2,12 @@
     <div>
        <Headers title="设置" detail="" />
        <ul class="set-detail">
+          <router-link to="/edit">
           <li>
               修改密码
                <i class="right_icon" />
           </li>
+          </router-link>
           <router-link to="/about">
           <li>
               关于我们
@@ -13,7 +15,7 @@
           </li>
           </router-link>
        </ul>
-       <p class="logout"><button>退出登录</button></p>
+       <p class="logout"><button @click="logout">退出登录</button></p>
     </div>
 </template>
 <script>
@@ -21,6 +23,11 @@ import Headers from '../common/NewHead'
 export default{
     components:{
         Headers
+    },
+    methods:{
+        logout(){
+            this.$router.push('/index');
+        }
     }
 }
 </script>

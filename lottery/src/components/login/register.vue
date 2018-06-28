@@ -5,7 +5,7 @@
            <p class="wel-title">欢迎您！</p>
               <p> <input type="text" placeholder="手机号码" /></p>
               <p><input type="text" placeholder="验证码" /><span class="getCode">获取验证码</span></p>
-              <p><input type="password" placeholder="设置密码" /></p>
+              <p><input :type="psw?'password':'text'" placeholder="设置密码" /><span @click="pswd" class="pimg"><img v-if="psw" src="./img/psw.png" /><img v-else src="./img/text.png" /></span></p>
             <button class="zhuce">注册</button>
            <router-link to="/login"><button class="loginto">直接登录</button></router-link>
           
@@ -17,14 +17,16 @@ import Headers from '../common/Header'
 export default{
   data(){
     return{
-        
+        psw:true
     }
   },
   components:{
     Headers
   },
   methods:{
-   
+    pswd(){
+      this.psw=!this.psw
+    }
   }
 }
 </script>
@@ -35,7 +37,14 @@ export default{
   background:#fff;
   height:100%;
 }
-
+.pimg{
+  position:absolute;
+  margin-left:-0.8rem;
+  margin-top:0.3rem;
+}
+.pimg img{
+  width:0.6rem;
+}
 .register input{
   width:7rem;
   height:1rem;

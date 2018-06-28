@@ -1,12 +1,15 @@
 import config from '../config/config'
 const LOGIN='LOGIN'
+const LOGOUT='LOGOUT'
 const RECHARGE='RECHARGE'
-const DBC='DBC'
 const KTHREE='KTHREE'
 export default{
     //登录操作
     [LOGIN](state){
         state.isLogin=true
+    },
+    [LOGOUT](state){
+        state.isLogin=false
     },
     //充值记录
     [RECHARGE](state,{price,date,type}){
@@ -16,15 +19,6 @@ export default{
         rec.type=type==1?'微信支付':'支付宝支付'
         state.chargelogs.unshift(rec)
         state.userinfo['yu']=price+state.userinfo['yu'];
-    },
-    //购买双色球
-    [DBC](state,{num,price}){
-        state.dbc.num=num
-        state.dbc.price=price
-        let obj={}
-        obj.price=price
-        obj.date=config.date
-        state.buylogs.unshift(obj)
     },
     //购买快三
     [KTHREE](state,{one,two,three,price}){

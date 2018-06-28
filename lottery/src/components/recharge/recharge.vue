@@ -9,8 +9,10 @@
         <li>
             微信<img src="./img/check.png" />
         </li>
-        <li style="color:#00c000">
+        <li >
+        <router-link to="/card" style="color:#00c000">
            <span style="font-size:0.6rem;vertical-align:bottom">+</span> 添加银行卡
+        </router-link>
         </li>
      </ul>
      <div class="pay_count">

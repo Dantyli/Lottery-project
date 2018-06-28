@@ -19,6 +19,7 @@ import qlc from '../components/qlc/qlc'
 import qxc from '../components/qxc/qxc'
 import register from '../components/login/register'
 import forget from '../components/login/forget'
+import edit from '../components/login/edit'
 import chargeDes from '../components/recharge/chargeDes'
 import tx from '../components/recharge/tix'
 import txdes from '../components/recharge/tixDes'
@@ -131,6 +132,11 @@ const router= new Router({
     {
       path:'/about',
       component:about,
+      meta:{index:4}
+    },
+    {
+      path:'/edit',
+      component:edit,
       meta:{index:4}
     },
     {

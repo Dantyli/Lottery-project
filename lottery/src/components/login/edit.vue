@@ -1,10 +1,10 @@
 <template>
    <div>
-       <Headers title="忘记密码" />
+       <Headers title="修改密码" />
        <div class="register" style="padding-top:0.5rem">
               <p> <input type="text" placeholder="手机号码" /></p>
               <p><input type="text" placeholder="验证码" /><span class="getCode">获取验证码</span></p>
-               <p><input :type="psw?'password':'text'" placeholder="设置密码" /><span @click="pswd" class="pimg"><img v-if="psw" src="./img/psw.png" /><img v-else src="./img/text.png" /></span></p>
+              <p><input :type="psw?'password':'text'" placeholder="设置密码" /><span @click="pswd" class="pimg"><img v-if="psw" src="./img/psw.png" /><img v-else src="./img/text.png" /></span></p>
             <button class="zhuce">提交</button>
        </div>
    </div>
@@ -22,7 +22,7 @@ export default{
   },
   methods:{
       pswd(){
-        this.psw=!this.psw
+          this.psw=!this.psw
       }
   }
 }

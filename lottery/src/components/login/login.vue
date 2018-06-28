@@ -9,8 +9,8 @@
            </div>
            <div class="loginpwd" v-else>
               <p> <input type="text" placeholder="手机号码" /></p>
-              <p><input type="text" placeholder="密码" /><span></span></p>
-              <p><router-link to="/forget">忘记密码</router-link></p>
+              <p><input :type="psw?'password':'text'" placeholder="密码" /><span @click="pswd" class="pimg"><img v-if="psw" src="./img/psw.png" /><img v-else src="./img/text.png" /></span></p>
+              <p><router-link to="/forget">忘记密码？</router-link></p>
            </div>
            <button class="loginto" @click="logIn">登录</button>
            <router-link to="/register"><button class="zhuce">注册</button></router-link>
@@ -22,7 +22,8 @@ import Headers from '../common/Header'
 export default{
   data(){
     return{
-        isCode:true
+        isCode:true,
+        psw:true
     }
   },
   components:{
@@ -33,9 +34,11 @@ export default{
      i>0?this.isCode=false:this.isCode=true;
     },
     logIn(){
-      
       this.$store.dispatch('login');
       this.$router.push('/index');
+    },
+    pswd(){
+      this.psw=!this.psw
     }
   }
 }
@@ -46,6 +49,14 @@ export default{
   margin-top:50px;
   background:#fff;
   height:100%;
+}
+.pimg{
+  position:absolute;
+  margin-left:-0.8rem;
+  margin-top:0.3rem;
+}
+.pimg img{
+  width:0.6rem;
 }
 .loginType{
   line-height:1rem;
