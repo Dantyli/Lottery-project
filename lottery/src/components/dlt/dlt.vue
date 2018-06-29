@@ -96,12 +96,13 @@ export default{
                 this.randomSelect();
                 return
             }
-            this.$message({
-                message:`购买成功`,
-                type:'success',
-                duration:'800'
-            })
-            this.clear();
+            this.$store.dispatch('selectDlt',{red:this.redarr,blue:this.bluearr,zhu:this.acount,pric:this.total})
+           this.$router.push({
+               path:'confirm',
+               query:{
+                   type:'dlt'
+               }
+           });
         },
         randomSelect(){
             const x=5,y=2;

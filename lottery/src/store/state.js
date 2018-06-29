@@ -1,14 +1,23 @@
 export default {
     isLogin:false,
-    userinfo:{
-        username:'',
-        logtime:'',
-        yu:0.00
+    dlt:{
+        qi:1,
+        bei:1,
+        det:[
+           // {id:'',red:[],blue:[],zhu:'',pric:'',type:'',number:''}
+        ]
     },
-    //充值记录
-    chargelogs:[],
-    dbc:{},
-    kthree:{},
-    //投注记录
-    buylogs:[]
+    dbc:{
+        qi:1,
+        bei:1,
+        det:[
+           // {id:'',red:[],blue:[],zhu:'',pric:'',type:'',number:''}
+        ]
+    },
+    //福彩 1直选2组三3组六
+    fc:{
+        det:[
+            {id:'',number:'',zhu:'',pric:'',type:'',ge:'',shi:'',bai:''}
+        ]
+    }
 }

@@ -25,7 +25,9 @@ export default {
     height:50px;
     line-height:50px;
     font-size:16px;
-    background:#cc2b2f;
+    background-image: linear-gradient(0deg, 
+		#d20000 0%, 
+		#ff2c2c 100%);
     color:#fff;
     padding:0 0.2rem;
     position:fixed;

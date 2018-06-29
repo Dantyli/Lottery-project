@@ -97,12 +97,13 @@ export default{
                this.randomSelect();
                return;
             }
-            this.$message({
-                message:`购买成功,${this.acount}注共${this.total}元`,
-                type:'success',
-                duration:'800'
-            })
-            this.clear();
+            this.$store.dispatch('selectDbc',{red:this.redarr,blue:this.bluearr,zhu:this.acount,pric:this.total})
+           this.$router.push({
+               path:'confirm',
+               query:{
+                   type:'dbc'
+               }
+           });
         },
         //机选
         randomSelect(){

@@ -207,10 +207,20 @@
 .tips .shake{
 	float: left;
 	color: #999;
+	background:url('../img/shake.png');
+	background-size:0.5rem;
+	background-repeat: no-repeat; 
+	background-position:left center; 
+	padding-left:0.5rem; 
 }
 .dbc_tips .shake{
 	float: left;
 	color: #999;
+	background:url('../img/shake.png');
+	background-size:0.5rem;
+	background-position:left center; 
+	background-repeat: no-repeat; 
+	padding-left:0.5rem; 
 }
 .mask{
 	background:#000;

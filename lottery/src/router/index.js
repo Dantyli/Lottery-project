@@ -26,6 +26,7 @@ import txdes from '../components/recharge/tixDes'
 import card from '../components/person/card'
 import set from '../components/person/settings'
 import about from '../components/person/about'
+import confirm from '../components/confirm/confirm'
 Vue.use(Router)
 
 const router= new Router({
@@ -158,6 +159,11 @@ const router= new Router({
       path:'/txdes',
       component:txdes,
       meta:{index:2}
+    },
+    {
+      path:'/confirm',
+      component:confirm,
+      meta:{index:4}
     }
   ]
 })
