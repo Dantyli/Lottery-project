@@ -131,7 +131,14 @@ export default{
                 this.randomSelect();
                 return;
             }
-            alert('pailie5')
+           this.$store.dispatch('selectPlf',{pric:this.total,zhu:this.acount,ge:this.gearr.map(v=>{return v.num}),
+           shi:this.shiarr.map(v=>{return v.num}),bai:this.baiarr.map(v=>{return v.num}),qian:this.qianarr.map(v=>{return v.num}),wan:this.wanarr.map(v=>{return v.num})})
+           this.$router.push({
+               path:'/confirm',
+               query:{
+                   type:'plf'
+               }
+           })
         },
         randomSelect(){
             this.clear()

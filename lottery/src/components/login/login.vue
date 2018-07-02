@@ -9,7 +9,7 @@
            </div>
            <div class="loginpwd" v-else>
               <p> <input type="text" placeholder="手机号码" /></p>
-              <p><input :type="psw?'password':'text'" placeholder="密码" /><span @click="pswd" class="pimg"><img v-if="psw" src="./img/psw.png" /><img v-else src="./img/text.png" /></span></p>
+              <p><input :type="psw?'password':'text'" v-model="passwd" placeholder="密码" /><span @click="pswd" class="pimg"><img v-if="psw" src="./img/psw.png" /><img v-else src="./img/text.png" /></span></p>
               <p><router-link to="/forget">忘记密码？</router-link></p>
            </div>
            <button class="loginto" @click="logIn">登录</button>
@@ -23,7 +23,8 @@ export default{
   data(){
     return{
         isCode:true,
-        psw:true
+        psw:true,
+        passwd:''
     }
   },
   components:{

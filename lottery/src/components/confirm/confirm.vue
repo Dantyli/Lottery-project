@@ -8,17 +8,21 @@
              <li @click="jiXuan">+机选</li>
              <li @click="clearList">清空列表</li>
           </ul>
-          <div class="confirm-list">
+          <div class="confirm-list" v-if="items.length>0">
             <img src="./img/top.png" />
             <ul>
                 <li v-for="item in items">
                    <i class="delete_icon" @click="dele(item.id)" />
                    <p>{{item.number}} </p>
-                   <p>普通投注 共{{item.zhu}}注{{item.pric}}元</p>
+                   <p>{{item.type==1?'普通投注':item.type==2?'组三':'组六'}}
+                    共{{item.zhu}}注{{item.pric}}元</p>
                 </li>
             </ul>
             <p class="xiy">我已阅读并同意《用户服务协议》</p>
           </div>
+          <h2 v-else style="text-align:center">
+            there is nothing!
+          </h2>
           
        </div>
        <div class="confirm_btm">
@@ -62,6 +66,7 @@
                });
                this.zhu=zhus;
                this.total=this.zhu*this.qi*2*this.bei
+               console.log(this.items)
            },
            ziXaun(){
                switch(this.type){
@@ -146,6 +151,32 @@
                    })
                    this.$store.dispatch('selectDbc',{red:oreds,blue:oblues,zhu:1,pric:2});
                    break;
+                   case 'fc':
+                   let numberArr = config.randomFromZero(10, 3);
+                    this.$store.dispatch('selectFc',{type:1,zhu:1,pric:2,
+                    ge:[numberArr[0]],shi:[numberArr[1]],bai:[numberArr[2]]});
+                    break;
+                     case 'plt':
+                   let numberAr = config.randomFromZero(10, 3);
+                    this.$store.dispatch('selectPlt',{type:1,zhu:1,pric:2,
+                    ge:[numberAr[0]],shi:[numberAr[1]],bai:[numberAr[2]]});
+                    break;
+                    case 'plf':
+                   let numberA = config.randomFromZero(10,5);
+                    this.$store.dispatch('selectPlf',{type:1,zhu:1,pric:2,
+                    ge:[numberA[0]],shi:[numberA[1]],bai:[numberA[2]],qian:[numberA[3]],wan:[numberA[4]]});
+                    break;
+                    case 'qxc':
+                     this.$store.dispatch('selectQxc',{pric:2,zhu:1,bwan:[config.random(10,1)],swan:[config.random(10,1)],
+                     wan:[config.random(10,1)],qian:[config.random(10,1)],bai:[config.random(10,1)],shi:[config.random(10,1)],
+                     ge:[config.random(10,1)]});
+                     break;
+                     case 'qlc':
+                     let nums=[]
+                     for(let i=0;i<7;i++){
+                         nums.push(config.random(10,1));
+                     }
+                     this.$store.dispatch('selectQlc',{pric:2,zhu:1,nums:nums})
                }
                 this.init();
            },
@@ -156,6 +187,21 @@
                    break;
                    case 'dbc':
                    this.$store.dispatch('delDbc',{id:i});
+                   break;
+                    case 'fc':
+                   this.$store.dispatch('delFc',{id:i});
+                   break;
+                    case 'plt':
+                   this.$store.dispatch('delPlt',{id:i});
+                   break;
+                    case 'plf':
+                   this.$store.dispatch('delPlf',{id:i});
+                   break;
+                    case 'qxc':
+                   this.$store.dispatch('delQxc',{id:i});
+                   break;
+                    case 'qlc':
+                   this.$store.dispatch('delQlc',{id:i});
                    break;
                }
                this.init();

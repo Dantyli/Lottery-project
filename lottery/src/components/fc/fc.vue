@@ -22,14 +22,14 @@
            </ul>
        </div>
        <div class="fc" v-else-if="tabs[1].status==1">
-          <p class="tips">至少选择<span>2</span>个号码，中奖<span>1000</span>元</p>
+          <p class="tips"><span class="shake">摇一摇机选</span>至少选择<span>2</span>个号码，中奖<span>320</span>元</p>
            <ul>
                <p>选号</p>
                 <li @click="check(2,0,index)"  v-for="(item,index) in san" :class="item.active?'active':''">{{item.num}}</li>
            </ul>
        </div>
         <div class="fc" v-else-if="tabs[2].status==1">
-          <p class="tips">至少选择<span>3</span>个号码，中奖<span>160</span>元</p>
+          <p class="tips"><span class="shake">摇一摇机选</span>至少选择<span>3</span>个号码，中奖<span>160</span>元</p>
            <ul>
                <p>选号</p>
                <li @click="check(3,0,index)" v-for="(item,index) in liu" :class="item.active?'active':''">{{item.num}}</li>
@@ -144,10 +144,23 @@ export default{
                 this.randomSelect();
                 return;
             }
-            this.$message({
-                type:'success',
-                message:'福彩3D'
-            })
+            if(this.tabs[0].status==1){
+                this.$store.dispatch('selectFc',{type:1,zhu:this.acount,pric:this.total,
+               ge:this.gearr.map(v=>{return v.num}),shi:this.shiarr.map(v=>{return v.num}),bai:this.baiarr.map(v=>{return v.num})})
+               
+            }else if(this.tabs[1].status==1){
+                   this.$store.dispatch('selectFc',{type:2,zhu:this.acount,pric:this.total,
+               ge:this.sanarr.map(v=>{return v.num})})
+            }else{
+                this.$store.dispatch('selectFc',{type:3,zhu:this.acount,pric:this.total,
+               ge:this.liuarr.map(v=>{return v.num})})
+            }
+             this.$router.push({
+                    path:'/confirm',
+                    query:{
+                        type:'fc'
+                    }
+                })
         },
         tab(i){
             this.tabs.map(v=>{

@@ -34,13 +34,13 @@ export default{
     },
     created(){
         let red=[],blue=[];
-        for(var i=0;i<34;i++){
+        for(var i=1;i<36;i++){
             let obj={}
             obj.active=false;
             obj.num=Util.formatNum(i);
             red.push(obj)
         }
-        for(var i=0;i<13;i++){
+        for(var i=1;i<13;i++){
             let obj={}
             obj.active=false;
             obj.num=Util.formatNum(i);

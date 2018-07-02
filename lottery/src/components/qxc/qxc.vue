@@ -3,7 +3,7 @@
        <Headers title="七星彩" />
        <div class="fc  qxc" style="margin-top:50px">
          <p class="qxc_index">第20180622期，16:50开奖</p>
-          <p class="tips"><span class="shake">摇一摇机选</span>选择<span>3</span>个号码，中奖<span>1000</span>元</p>
+          <p class="tips"><span class="shake">摇一摇机选</span>选择<span>7</span>个号码，最高中奖<span>500</span>万元</p>
           <ul>
                <p>百万位</p>
                <li @click="check(1,index)" v-for="(item,index) in bwan" :class="item.active?'active':''">{{item.num}}</li>
@@ -163,8 +163,16 @@ export default{
             if(this.total==0){
                 this.randomSelect();
                 return;
-            }
-            alert('kjjj')
+            };
+           this.$store.dispatch('selectQxc',{zhu:this.acount,pric:this.total,bwan:this.bwanarr.map(v=>{return v.num}),
+           swan:this.swanarr.map(v=>{return v.num}),wan:this.wanarr.map(v=>{return v.num}),qian:this.qianarr.map(v=>{return v.num}),
+           bai:this.baiarr.map(v=>{return v.num}),shi:this.shiarr.map(v=>{return v.num}),ge:this.gearr.map(v=>{return v.num})})
+           this.$router.push({
+               path:'/confirm',
+               query:{
+                   type:'qxc'
+               }
+           })
         },
         randomSelect(){
             this.clear()

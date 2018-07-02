@@ -31,7 +31,7 @@ router.beforeEach((to,from,next)=>{
   }
 })
 //自动登录
-let account=localStorage.getItem('account')
-if(account!==null){
-    store.dispatch('login');
-}
+//let account=localStorage.getItem('account')
+//if(account!==null){
+  //  store.dispatch('login');
+//}

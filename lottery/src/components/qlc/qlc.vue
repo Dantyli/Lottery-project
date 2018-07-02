@@ -3,7 +3,7 @@
         <Headers title="七乐彩" />
         <div class="qlc">
         <p class="dbc_index">第20180621期 19:40开奖</p>
-        <p class="dbc_tips"><span class="shake">摇一摇机选</span>选择<span>6</span>个号，最高中<span>500万</span></p>
+        <p class="dbc_tips"><span class="shake" style="color:#999">摇一摇机选</span>选择<span>7</span>个号，最高中奖<span>500</span>万元</p>
         <ul>
            <li @click="check(index)" v-for="(item,index) in first" :class="item.active?'check':''">{{item.num}}</li>
             <div style="clear:both"></div>
@@ -59,12 +59,13 @@ export default{
                 this.randomSelect();
                 return
             }
-            this.$message({
-                message:`购买成功`,
-                type:'success',
-                duration:'800'
+            this.$store.dispatch('selectQlc',{pric:this.total,zhu:this.acount,nums:this.farr.map(v=>{return v.num})})
+            this.$router.push({
+                path:'/confirm',
+                query:{
+                    type:'qlc'
+                }
             })
-            this.clear();
         },
         randomSelect(){
             this.clear()

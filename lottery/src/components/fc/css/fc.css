@@ -19,10 +19,12 @@
     line-height:0.6rem;
     color:#fff;
     background:rgb(0,153,67);
-    width:1.5rem;
+    width:1.2rem;
     font-size:0.38rem;
     padding-left:0.2rem;
     margin-left:-0.4rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
 }
 .fc ul li{
     display:inline-block;
