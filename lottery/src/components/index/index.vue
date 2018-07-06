@@ -1,6 +1,6 @@
 <template>
     <div>
-       <img src="./banner.png" style="width:100%" />
+       <img src="../../assets/img/banner.png" style="width:100%" />
        <div class="menu">
             <ul>
             <router-link to='/openHall'>

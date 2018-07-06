@@ -245,3 +245,6 @@ div.el-message-box {
 	font-size: 14px;
 	padding: 10px 15px;
 }
+.el-message{
+	min-width: 90%;
+}

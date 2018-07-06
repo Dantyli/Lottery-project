@@ -50,8 +50,8 @@ export default {
     height: 100%;
     float: right;
     margin-right: 0.4rem;
-    font-size: 0.38rem;
+    font-size: 0.35rem;
     line-height: 50px;
-    width:1rem;
+    min-width:1rem;
 }
 </style>

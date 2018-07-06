@@ -30,10 +30,10 @@ import confirm from '../components/confirm/confirm'
 Vue.use(Router)
 
 const router= new Router({
-  mode:'history',
+  //mode:'history',
   routes: [
     {
-     path:'*',//页面不存在重定向
+     path:'/',
      redirect:'/index',
     },
     {
