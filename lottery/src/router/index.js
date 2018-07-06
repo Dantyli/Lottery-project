@@ -30,9 +30,10 @@ import confirm from '../components/confirm/confirm'
 Vue.use(Router)
 
 const router= new Router({
+  mode:'history',
   routes: [
     {
-     path:'/',
+     path:'*',//页面不存在重定向
      redirect:'/index',
     },
     {
@@ -103,12 +104,12 @@ const router= new Router({
     {
       path:'/recharge',
       component:recharge,
-      meta:{index:2}
+      meta:{index:3}
     },
     {
       path:'/chargeDes',
       component:chargeDes,
-      meta:{index:3}
+      meta:{index:4}
     },
     {
       path:'/log',
@@ -153,12 +154,12 @@ const router= new Router({
     {
       path:'/tx',
       component:tx,
-      meta:{index:2}
+      meta:{index:3}
     },
     {
       path:'/txdes',
       component:txdes,
-      meta:{index:2}
+      meta:{index:4}
     },
     {
       path:'/confirm',

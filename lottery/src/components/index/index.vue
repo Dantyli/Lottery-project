@@ -68,7 +68,7 @@
            <p class="domain-title"><span>大乐透</span>  <span style="color:#f00">奖池:{{jiangchi}}</span><span class="refresh"  @click="chose">换一注</span></p>
            <div class="letou-num">
                <p v-for="item in rotates" :class="item.rot==1?'rotate':''">{{item.count}}</p>
-               <button>{{buy_one}}元购买</button>
+               <button @click="open7">2元购买</button>
                <div style="clear:both"></div>
            </div>
        </div>
@@ -141,7 +141,6 @@ export default {
            //将最后一条追加最后，无缝滚动
            timer:'',
            jiangchi:'7.99亿',
-           buy_one:2
         }
     },
     created(){
@@ -165,7 +164,25 @@ export default {
                     v.rot=0;
                 },500*(i+1))
             });
-        }
+        },
+        open7() {
+        this.$confirm(`[双色球]<br/> 第20180707期 <br/>共1注，您需要支付${this.jiangchi}元`, '投注确认', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          center: true,
+          dangerouslyUseHTMLString: true
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '购买成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消'
+          });
+        });
+      }
     },
      computed: {
     top() {

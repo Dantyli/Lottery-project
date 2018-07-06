@@ -1,7 +1,7 @@
 import config from '../config/config'
 import {LOGIN,LOGOUT,DLT,CDLT,DELDLT,DBC,CDBC,DELDBC,FC,
 CFC,DELFC,PLT,CPLT,DELPLT,PLF,CPLF,DELPLF,QXC,CQXC,DELQXC,
-QLC,CQLC,DELQLC} from './actionTypes'
+QLC,CQLC,DELQLC} from './mutationTypes'
 let dlt_id=0,dbc_id=0,fc_id=0,plt_id=0,plf_id=0,qxc_id=0,qlc_id=0; 
 export default{
     //登录操作

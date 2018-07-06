@@ -232,3 +232,16 @@
 	width: 100%;
 	z-index:4;
 }
+div.el-message-box {
+	width: 250px;
+}
+.el-message-box--center .el-message-box__header{
+	padding-top:20px; 
+}
+.el-message-box--center{
+	padding-bottom: 20px;
+}
+.el-button--small{
+	font-size: 14px;
+	padding: 10px 15px;
+}

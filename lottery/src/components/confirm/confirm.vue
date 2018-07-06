@@ -30,7 +30,7 @@
              <span class="tzz">投注站</span><p>追 <input type="text" @input="chage" v-model="qi" /> 期<span style="color:#ddd;margin:0 0.1rem;">|</span>投 <input @input="chage" type="text" v-model="bei" /> 倍</p>
           </div>
           <div>
-             <p>{{zhu}}<span>注</span>{{qi}}<span>期</span>{{bei}}<span>倍</span> 共{{total}}元</p><button>下一步</button>
+             <p>{{zhu}}<span>注</span>{{qi}}<span>期</span>{{bei}}<span>倍</span> 共{{total}}元</p><button @click="confirm">下一步</button>
           </div>
        </div>
     </div>
@@ -47,7 +47,8 @@
                bei:1,
                zhu:'',
                total:0,
-               type:''
+               type:'',
+               typeName:''
             }
         },
         components:{
@@ -55,6 +56,29 @@
         },
         created(){
             this.type=this.$route.query.type
+            switch(this.type){
+                case 'dlt':
+                this.typeName='大乐透'
+                break;
+                 case 'dbc':
+                this.typeName='双色球'
+                break;
+                 case 'fc':
+                this.typeName='福彩'
+                break;
+                 case 'plt':
+                this.typeName='排列三'
+                break;
+                 case 'plf':
+                this.typeName='排列五'
+                break;
+                 case 'qxc':
+                this.typeName='七星彩'
+                break;
+                 case 'qlc':
+                this.typeName='七乐彩'
+                break;
+            }
             this.init()
         },
         methods:{
@@ -208,6 +232,27 @@
            },
            chage(){
                this.init()
+           },
+           confirm(){
+               if(this.total==0){
+                   return;
+               }
+                this.$confirm(`[${this.typeName}]<br/> 第20180707期 <br/>共${this.zhu}注，您需要支付${this.total}元`, '投注确认', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                center: true,
+                dangerouslyUseHTMLString: true
+                }).then(() => {
+                this.$message({
+                    type: 'success',
+                    message: '购买成功!'
+                });
+                }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消'
+                });
+                });
            }
         }
     }

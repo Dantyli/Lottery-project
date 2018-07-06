@@ -15,7 +15,13 @@ export default {
         : this.$router.push('/')
         },
         goDetail(){
-            this.$router.push('/chargeDes')
+            const rout=this.$route.path
+            if(rout=='/tx'){
+                 this.$router.push('/txdes')
+            }else if(rout=='/recharge'){
+                this.$router.push('/chargeDes')
+            }
+            
         }
     }
 }
@@ -46,5 +52,6 @@ export default {
     margin-right: 0.4rem;
     font-size: 0.38rem;
     line-height: 50px;
+    width:1rem;
 }
 </style>
