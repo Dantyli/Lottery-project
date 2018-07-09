@@ -5,7 +5,8 @@ import './assets/css/style.css'
 import './assets/js/flexible.js'
 import router from './router'
 import store from './store/index'
-Vue.use(ElementUI)
+Vue.use(ElementUI);
+store.commit('INIT');
 new Vue({
   el: '#app',
   router,

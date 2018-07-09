@@ -248,3 +248,7 @@ div.el-message-box {
 .el-message{
 	min-width: 90%;
 }
+.el-message-box--center .el-message-box__content{
+	padding-left: 20px;
+	padding-right: 20px;
+}

@@ -1,9 +1,34 @@
 import config from '../config/config'
 import {LOGIN,LOGOUT,DLT,CDLT,DELDLT,DBC,CDBC,DELDBC,FC,
 CFC,DELFC,PLT,CPLT,DELPLT,PLF,CPLF,DELPLF,QXC,CQXC,DELQXC,
-QLC,CQLC,DELQLC} from './mutationTypes'
+QLC,CQLC,DELQLC,INIT,UPDATE} from './mutationTypes'
+import { stat } from 'fs';
 let dlt_id=0,dbc_id=0,fc_id=0,plt_id=0,plf_id=0,qxc_id=0,qlc_id=0; 
 export default{
+    //增加UPDATE,INIT同步store中的数据到sessionStorage,防止刷新数据丢失
+    [UPDATE](state){
+        sessionStorage.clear()
+        Object.keys(state).map(v=>{
+            if(state[v].det){
+                state[v].det.forEach((item,i)=>{
+                    let name=v+i
+                    sessionStorage.setItem(name,JSON.stringify(item));
+                });
+                sessionStorage.setItem(v,state[v].det.length);
+                console.log(state);
+            }
+            
+        })
+    },
+    [INIT](state){
+        console.log('----')
+        Object.keys(state).map(v=>{
+            for(let i=0;i<sessionStorage.getItem(v);i++){
+                let name=v+i;
+                state[v].det.push(JSON.parse(sessionStorage.getItem(name)));
+            }
+        })
+    },
     //登录操作
     [LOGIN](state){
         state.isLogin=true

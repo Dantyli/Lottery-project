@@ -5,7 +5,7 @@ let config={
     //随机数两位
     randomJx:function(n){
      let num=Math.random()*n
-     num=Math.floor(num);
+     num=Math.ceil(num);
      return util.formatNum(num);
     },
     //注数计算规则

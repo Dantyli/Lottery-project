@@ -39,6 +39,9 @@ export default{
        },
        confirm(){
            const rout=this.$route
+           if(!this.$store.state.isLogin){
+               this.$router.push('login');
+           }
            switch(rout.path){
                case '/dbc':
                this.$root.eventHub.$emit('ssqBuy');

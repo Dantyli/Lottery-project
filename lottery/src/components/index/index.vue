@@ -155,7 +155,7 @@ export default {
             this.rotates.forEach((v,i)=>{
                 v.rot=1;
                 if(i<5){
-                    v.count=config.randomJx(33);
+                    v.count=config.randomJx(35);
                 }else{
                     v.count=config.randomJx(12);
                 }
@@ -166,7 +166,7 @@ export default {
             });
         },
         open7() {
-        this.$confirm(`[双色球]<br/> 第20180707期 <br/>共1注，您需要支付${this.jiangchi}元`, '投注确认', {
+        this.$confirm(`[大乐透]<br/> 第2018077期 <br/>共1注1倍，您需要支付${this.jiangchi}元`, '投注确认', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           center: true,

@@ -79,7 +79,7 @@
                 this.typeName='七乐彩'
                 break;
             }
-            this.init()
+            this.init();
         },
         methods:{
            init(){
@@ -90,6 +90,7 @@
                });
                this.zhu=zhus;
                this.total=this.zhu*this.qi*2*this.bei
+                this.$store.commit('UPDATE');
                console.log(this.items)
            },
            ziXaun(){

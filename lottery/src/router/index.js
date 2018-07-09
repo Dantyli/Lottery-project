@@ -33,7 +33,7 @@ const router= new Router({
   //mode:'history',
   routes: [
     {
-     path:'/',
+     path:'*',//重定向首页
      redirect:'/index',
     },
     {
