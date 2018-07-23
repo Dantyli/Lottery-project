@@ -15,7 +15,6 @@ export default{
                     sessionStorage.setItem(name,JSON.stringify(item));
                 });
                 sessionStorage.setItem(v,state[v].det.length);
-                console.log(state);
             }
             
         })

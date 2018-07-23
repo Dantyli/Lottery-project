@@ -11,6 +11,7 @@
           <router-link to="/choseHall"> <li class="menu_buy_icon">购彩大厅</li> </router-link>
            <router-link to="/openHall"><li class="menu_open_icon">开奖大厅</li></router-link>
        </ul>
+       <div v-if="menus" class="wmask" @click="menus=false"></div>
     </div>
 </template>
 <script>
@@ -50,6 +51,15 @@ export default{
     z-index:10;
     text-align:center;
 }
+.wmask{
+    height:100%;
+    width:100%;
+    background:#fff;
+    opacity:0;
+    position:fixed;
+    z-index:9;
+    left:0;
+}
 .goBack{float:left;width:1rem;text-align:left;}
 .header i{font-size:20px;}
 .menu-right{
@@ -68,6 +78,7 @@ export default{
     right:0.2rem;
     top:60px;
     padding:0.2rem;
+    z-index:10;
 }
 .header ul li{
     height:1rem;

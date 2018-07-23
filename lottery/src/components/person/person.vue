@@ -52,6 +52,12 @@
            <p style="clear:both"></p>
        </div>
        <ul class="info-detail">
+        <router-link to="/order">
+           <li>
+              <img src="./img/money.png" />投注记录
+              <i class="right_icon" />
+           </li>
+        </router-link>
        <router-link to="/log">
            <li>
               <img src="./img/money.png" />资金明细

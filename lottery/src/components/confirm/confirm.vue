@@ -91,7 +91,6 @@
                this.zhu=zhus;
                this.total=this.zhu*this.qi*2*this.bei
                 this.$store.commit('UPDATE');
-               console.log(this.items)
            },
            ziXaun(){
                switch(this.type){

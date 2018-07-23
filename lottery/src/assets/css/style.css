@@ -252,3 +252,12 @@ div.el-message-box {
 	padding-left: 20px;
 	padding-right: 20px;
 }
+.swiper{
+	white-space: nowrap;
+}
+.transw{
+    transition: 1s  ease-in-out;
+}
+.swiper img{
+	width: 100%;
+}

@@ -1,6 +1,8 @@
 <template>
     <div>
-       <img src="../../assets/img/banner.png" style="width:100%" />
+    <div style="overflow:hidden">
+        <div  :class="`swiper ${transxIndex>0?'transw':''}`" :style="{transform:`translateX(${transx}%)`}"> <img src="../../assets/img/banner.png"/><img src="../../assets/img/banner.png"/> </div>
+    </div>
        <div class="menu">
             <ul>
             <router-link to='/openHall'>
@@ -141,6 +143,7 @@ export default {
            //将最后一条追加最后，无缝滚动
            timer:'',
            jiangchi:'7.99亿',
+           transxIndex:0 //轮播图
         }
     },
     created(){
@@ -187,6 +190,9 @@ export default {
      computed: {
     top() {
       return - this.activeIndex * 50 + 'px';
+    },
+    transx(){
+        return - this.transxIndex*100;
     }
   },
   mounted() {
@@ -198,9 +204,17 @@ export default {
           this.activeIndex=0;
       }
     }, 2000);
+    window.timers=setInterval(()=> {
+      if(this.transxIndex+1<2){
+         this.transxIndex+=1;
+      }else{
+          this.transxIndex=0;
+      }
+    }, 2000);
   },
   destroyed(){
       clearInterval(window.timer);
+      clearInterval(window.timers);
   },
 }
 </script>

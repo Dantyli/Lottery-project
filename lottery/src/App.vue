@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <transition :name="isHistory?'slide-right':'slide-left'">
+  <transition :name="transitionName">
           <router-view  />
   </transition>
   </div>
@@ -11,15 +11,15 @@ export default {
   name: 'App',
   data(){
     return{
-      isHistory:true
+      transitionName:''
     }
   },
   watch:{
     '$route'(to,from){
       if(to.meta.index<from.meta.index){
-        this.isHistory=false;
+        this.transitionName='slide-left';
       }else{
-        this.isHistory=true;
+        this.transitionName='slide-right'
       }
     }
   }
