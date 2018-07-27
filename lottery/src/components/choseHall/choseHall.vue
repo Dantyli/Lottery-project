@@ -2,14 +2,12 @@
 <div>
     <Headers title="购彩大厅" />
     <ul class="choseHall">
-    <router-link to="/dlt">
-       <li class="dlt_icon">
+    <router-link tag="li" class="dlt_icon" to="/dlt">
           <div>
              <p>大乐透</p>
              <p>球迷最爱，返奖率高</p>
           </div>
           <i class="right_icon" />
-       </li>
     </router-link>
     <router-link to="/dbc">
        <li class="dbc_icon">
@@ -19,6 +17,7 @@
           </div>
            <i class="right_icon" />
        </li>
+    </router-link>
     <router-link to="/fc">
        <li class="fc_icon">
           <div>

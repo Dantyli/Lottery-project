@@ -252,6 +252,9 @@ div.el-message-box {
 	padding-left: 20px;
 	padding-right: 20px;
 }
+.swiper-wrapper{
+	overflow: hidden;
+}
 .swiper{
 	white-space: nowrap;
 }

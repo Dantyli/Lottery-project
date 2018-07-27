@@ -1,8 +1,10 @@
 <template>
     <div>
-    <div style="overflow:hidden">
-        <div  :class="`swiper ${transxIndex>0?'transw':''}`" :style="{transform:`translateX(${transx}%)`}"> <img src="../../assets/img/banner.png"/><img src="../../assets/img/banner.png"/> </div>
-    </div>
+        <div class="swiper-wrapper">
+            <ul  :class="`swiper ${transxIndex>0?'transw':''}`" :style="{transform:`translateX(${transx}%)`}"> 
+                <img src="../../assets/img/banner.png"/><img src="../../assets/img/banner.png"/> 
+            </ul>
+        </div>
        <div class="menu">
             <ul>
             <router-link to='/openHall'>

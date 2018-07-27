@@ -12,4 +12,4 @@ const store=new Vuex.Store({
     //唯一拥有更改内存数据的接口，此操作为同步
     mutations
 })
-export default store
+export default store;
